@@ -75,7 +75,7 @@ The mitigation I implemented is **context-aware output encoding** (`html.escape(
 
 | Member Name | Roll Number | Category | Variant Implemented |
 |---|---|---|---|
-| *(your name)* | *(your roll)* | Cross-Site Scripting (XSS) | Reflected XSS |
+| *Anurag* | *IIT2024156* | Cross-Site Scripting (XSS) | Reflected XSS |
 
 ---
 
