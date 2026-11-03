@@ -1,0 +1,11 @@
+{
+  "name": "csrf-assignment",
+  "version": "1.0.0",
+  "description": "CSRF (GET-based forged action) - vulnerable vs secured demo. No dependencies.",
+  "scripts": {
+    "vulnerable": "node vulnerable/server.js",
+    "secured": "node secured/server.js",
+    "attacker": "node attacker/server.js"
+  },
+  "license": "MIT"
+}
