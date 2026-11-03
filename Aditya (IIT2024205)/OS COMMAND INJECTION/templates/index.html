@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Injection Lab</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b1020;
+            color: #f1f5f9;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 30px;
+        }
+
+        .panel {
+            background: #141d32;
+            border: 1px solid #293957;
+            border-radius: 16px;
+            padding: 30px 24px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .link {
+            display: inline-block;
+            padding: 14px 20px;
+            border-radius: 10px;
+            background: #202d49;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .link:hover {
+            background: #2b3b5d;
+        }
+
+        .vulnerable span {
+            color: #ff9eaa;
+        }
+
+        .safe span {
+            color: #6ee7c8;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px auto;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+
+        <h1>Command Injection Lab</h1>
+
+        <section class="panel">
+            <div class="actions">
+
+                <a href="/vulnerable" class="link vulnerable">
+                    <span>●</span> Vulnerable demo
+                </a>
+
+                <a href="/safe" class="link safe">
+                    <span>●</span> Mitigated demo
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>

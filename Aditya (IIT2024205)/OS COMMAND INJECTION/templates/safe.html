@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secured Ping Tool</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b1020;
+            color: #f1f5f9;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .panel {
+            background: #141d32;
+            border: 1px solid #293957;
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #354765;
+            background: #080e1c;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button, .home {
+            padding: 13px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        button {
+            background: #8998ff;
+            color: #080e1c;
+        }
+
+        .home {
+            background: #202d49;
+            color: white;
+        }
+
+        .result {
+            margin-top: 24px;
+        }
+
+        pre {
+            background: #080e1c;
+            border: 1px solid #293957;
+            border-radius: 10px;
+            padding: 16px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            color: #dbeafe;
+        }
+
+        .error {
+            color: #ff9a9a;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Secured Ping Tool</h1>
+
+        <div class="panel">
+
+            <form method="POST" action="/safe">
+
+                <label for="host">Host</label>
+
+                <input
+                    type="text"
+                    id="host"
+                    name="host"
+                    value="{{ host if host else '' }}"
+                    autocomplete="off"
+                >
+
+                <div class="buttons">
+                    <button type="submit">
+                        Run diagnostic
+                    </button>
+
+                    <a href="/" class="home">
+                        Home
+                    </a>
+                </div>
+
+            </form>
+
+            {% if command %}
+            <div class="result">
+                <h3>Command executed</h3>
+                <pre>{{ command }}</pre>
+            </div>
+            {% endif %}
+
+            {% if output %}
+            <div class="result">
+                <h3>Output</h3>
+                <pre>{{ output }}</pre>
+            </div>
+            {% endif %}
+
+            {% if error %}
+            <div class="error">
+                {{ error }}
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</body>
+</html>
