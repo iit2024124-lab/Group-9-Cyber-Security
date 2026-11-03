@@ -1,0 +1,132 @@
+/* Simple, clean styling shared by both builds. */
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #1f2933;
+  --muted: #64748b;
+  --primary: #2563eb;
+  --border: #dbe2ea;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.container { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+.build-banner {
+  text-align: center;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+.build-banner.vulnerable { background: #b91c1c; }
+.build-banner.secured    { background: #15803d; }
+
+.site-header { background: #0f172a; padding: 14px 0; }
+.brand { color: #fff; font-size: 20px; font-weight: 700; text-decoration: none; }
+
+main { padding-top: 20px; padding-bottom: 20px; }
+h1 { font-size: 26px; margin: 8px 0 16px; }
+h2 { font-size: 19px; margin: 0 0 8px; }
+a { color: var(--primary); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.meta, .comment-meta { color: var(--muted); font-size: 13px; }
+
+label { display: block; font-weight: 600; margin: 10px 0 4px; font-size: 14px; }
+input, textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+}
+textarea { resize: vertical; }
+
+button, .button-link {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: var(--primary);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+button:hover, .button-link:hover { background: #1d4ed8; }
+
+.comment {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+}
+.comment-text { margin-top: 4px; word-wrap: break-word; }
+
+.error   { background: #fee2e2; color: #991b1b; padding: 8px 12px; border-radius: 6px; }
+.success { background: #dcfce7; color: #166534; padding: 8px 12px; border-radius: 6px; }
+
+.footer { color: var(--muted); font-size: 12px; padding-bottom: 24px; }
+
+/* ---- "+" button and slide-out panel for starting a new discussion (CSS only, no JavaScript) ---- */
+.fab {
+  position: fixed;
+  top: 76px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400;
+  color: #fff;
+  background: var(--primary);
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 20;
+}
+.fab:hover { background: #1d4ed8; }
+
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 340px;
+  max-width: 90%;
+  background: var(--card);
+  border-left: 1px solid var(--border);
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  overflow-y: auto;
+  transform: translateX(105%);
+  visibility: hidden;          /* keeps hidden fields out of the Tab order */
+  transition: transform 0.2s ease, visibility 0.2s;
+  z-index: 30;
+}
+.side-panel:target, .side-panel.open { transform: translateX(0); visibility: visible; }
+
+.side-panel-header { display: flex; justify-content: space-between; align-items: center; }
+.close-link { font-size: 28px; line-height: 1; color: var(--muted); text-decoration: none; }
+.close-link:hover { color: var(--text); }

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Discussion posts</h1>
+
+{# Small "+" button fixed on the right side. It just links to #new-discussion (CSS :target opens the panel). #}
+<a class="fab" href="#new-discussion" title="Start a new discussion" aria-label="Start a new discussion">+</a>
+
+{# Side panel for creating a post. Closed by default; stays open if the form had an error. #}
+<aside id="new-discussion" class="side-panel{% if error %} open{% endif %}">
+  <div class="side-panel-header">
+    <h2>Start a new discussion</h2>
+    <a class="close-link" href="#" title="Close" aria-label="Close">&times;</a>
+  </div>
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+  <form method="post" action="{{ url_for('new_post') }}">
+    <label for="username">Username</label>
+    <input id="username" name="username" maxlength="30" value="{{ form.get('username', '') }}" required>
+
+    <label for="title">Title</label>
+    <input id="title" name="title" maxlength="100" value="{{ form.get('title', '') }}" required>
+
+    <label for="body">Message</label>
+    <textarea id="body" name="body" rows="5" maxlength="2000" required>{{ form.get('body', '') }}</textarea>
+
+    <button type="submit">Create post</button>
+  </form>
+</aside>
+
+{% for post in posts %}
+<article class="card">
+  <h2><a href="{{ url_for('discussion', post_id=post.id) }}">{{ post.title }}</a></h2>
+  <p class="meta">by <strong>{{ post.username }}</strong> &middot; {{ post.created_at }} UTC &middot;
+    {{ post.comment_count }} comment{{ '' if post.comment_count == 1 else 's' }}</p>
+  <p>{{ post.body }}</p>
+  <a class="button-link" href="{{ url_for('discussion', post_id=post.id) }}">Open discussion</a>
+</article>
+{% else %}
+<p>No posts yet. Click the + button to start the first discussion.</p>
+{% endfor %}
+{% endblock %}
