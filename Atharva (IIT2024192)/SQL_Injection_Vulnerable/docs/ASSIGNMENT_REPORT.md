@@ -47,7 +47,3 @@ To demonstrate: show the failed normal login, run the payload on 8001, explain t
 
 ## Limitations
 This example displays account details after login but has no persistent sessions. Passwords are sample plaintext values to keep the query example small. A real site also needs salted password hashes and proper session management. Run these examples locally only.
-
-## References
-- https://docs.python.org/3/library/sqlite3.html
-- https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
