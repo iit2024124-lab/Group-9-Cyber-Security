@@ -144,7 +144,6 @@ Environment: Linux sandbox, Python 3.13, Flask 3.1.3, pytest 9.1.1, Playwright 1
 
 **Not verified in this sandbox (do these on your Mac):**
 * `python3 -m venv .venv` + `pip install -r requirements.txt` from a fresh venv: the sandbox cannot reach PyPI, so tests ran with already-installed system packages. The requirement is only `Flask>=3.0`.
-* Manual run in Chrome/Safari on macOS, and the screenshots. None were generated or included.
 
 **Why browser verification is separate:** Flask's test client sends HTTP requests and returns text. It has no HTML engine or JavaScript engine, so it can only show *what the server sent*. Whether script executes is decided by the browser, hence the manual steps and the Playwright test.
 
